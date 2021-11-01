@@ -1,0 +1,16 @@
+{
+	"apiVersion": 2,
+	"name": "innocode/wp-block-testimonial",
+    "version": "0.1.0",
+    "title": "Testimonial",
+	"category": "design",
+	"icon": "smiley",
+	"description": "Shares feedback, review etc. of other people.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "innocode-block-testimonial",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
