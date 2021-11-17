@@ -17,7 +17,13 @@ import {
 } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 
-import { BLOCK_CLASS_NAME, LAYOUT_DEFAULT, Layout, HAS_AUTHOR_INFO_DEFAULT, AUTHOR_IMAGE_SIZE_DEFAULT } from './constants';
+import {
+	BLOCK_CLASS_NAME,
+	LAYOUT_DEFAULT,
+	Layout,
+	HAS_AUTHOR_INFO_DEFAULT,
+	AUTHOR_IMAGE_SIZE_DEFAULT,
+} from './constants';
 
 import './editor.scss';
 
@@ -41,7 +47,7 @@ export default function Edit(props) {
 
 	const removeMedia = () => {
 		setAttributes({
-			authorImage: null
+			authorImage: null,
 		});
 	};
 
@@ -68,7 +74,10 @@ export default function Edit(props) {
 				>
 					<PanelRow>
 						<RadioControl
-							label={__('Author layout', 'innocode-block-counter')}
+							label={__(
+								'Author layout',
+								'innocode-block-counter'
+							)}
 							selected={layout}
 							options={[
 								{
@@ -93,7 +102,10 @@ export default function Edit(props) {
 					</PanelRow>
 					<PanelRow>
 						<legend className="blocks-base-control__label">
-							{__('Show additional info', 'innocode-block-counter')}
+							{__(
+								'Show additional info',
+								'innocode-block-counter'
+							)}
 						</legend>
 						<FormToggle
 							checked={hasAuthorInfo}
@@ -101,7 +113,7 @@ export default function Edit(props) {
 								setAttributes({
 									hasAuthorInfo: event.target.checked,
 								});
-							} }
+							}}
 						/>
 					</PanelRow>
 				</PanelBody>
@@ -113,14 +125,13 @@ export default function Edit(props) {
 			>
 				{layout && layout === Layout.AUTHOR_BOTTOM && testimonialText()}
 				<div className={`${BLOCK_CLASS_NAME}__author`}>
-					<div className="editor-post-featured-image">
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={onSelectMedia}
-								value={authorImage}
-								allowedTypes={['image']}
-								className="author-image"
-								render={({open}) => (
+					<MediaUploadCheck>
+						<MediaUpload
+							onSelect={onSelectMedia}
+							value={authorImage}
+							allowedTypes={['image']}
+							render={({ open }) => (
+								<div className="editor-post-featured-image">
 									<Button
 										className={
 											authorImage
@@ -137,51 +148,53 @@ export default function Edit(props) {
 										{authorImage && (
 											<img
 												className={`${BLOCK_CLASS_NAME}__author-image`}
-												src={authorImage.sizes[authorImageSize].url}
-												width={authorImage.sizes[authorImageSize].width}
-												height={authorImage.sizes[authorImageSize].height}
+												src={
+													authorImage.sizes[
+														authorImageSize
+													].url
+												}
+												width={
+													authorImage.sizes[
+														authorImageSize
+													].width
+												}
+												height={
+													authorImage.sizes[
+														authorImageSize
+													].height
+												}
 												alt={authorImage.alt}
 											/>
 										)}
 									</Button>
-								)}
-							/>
-						</MediaUploadCheck>
-							{/* {mediaId !== 0 && (
-								<MediaUploadCheck>
-									<Button
-										onClick={removeMedia}
-										isLink
-										isDestructive
-									>
-										{__(
-											'Remove image',
-											'innocode-block-testimonial'
-										)}
-									</Button>
-								</MediaUploadCheck>
-							)} */}
-						</div>
-						{/* {mediaUrl && (
-							<img
-								className={`${BLOCK_CLASS_NAME}__author-image`}
-								src={mediaUrl}
-								alt={authorName}
-							/>
-						)} */}
-						<div className={`${BLOCK_CLASS_NAME}__author-main`}>
-							<PlainText
-								tagName="cite"
-								value={authorName}
-								placeholder={__(
-									'Author name',
-									'innocode-block-testimonial'
-								)}
-								onChange={(value) => {
-									setAttributes({ authorName: value });
-								}}
-								className={`${BLOCK_CLASS_NAME}__author-name`}
-							/>
+									{authorImage && (
+										<Button
+											className={`${BLOCK_CLASS_NAME}__author-image-delete`}
+											onClick={removeMedia}
+											icon="dismiss"
+											aria-label={__(
+												'Remove image',
+												'innocode-block-testimonial'
+											)}
+										/>
+									)}
+								</div>
+							)}
+						/>
+					</MediaUploadCheck>
+					<div className={`${BLOCK_CLASS_NAME}__author-main`}>
+						<PlainText
+							tagName="cite"
+							value={authorName}
+							placeholder={__(
+								'Author name',
+								'innocode-block-testimonial'
+							)}
+							onChange={(value) => {
+								setAttributes({ authorName: value });
+							}}
+							className={`${BLOCK_CLASS_NAME}__author-name`}
+						/>
 						{hasAuthorInfo && (
 							<RichText
 								tagName="div"

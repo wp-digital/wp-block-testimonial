@@ -1,6 +1,12 @@
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 
-import { BLOCK_CLASS_NAME, LAYOUT_DEFAULT, Layout, HAS_AUTHOR_INFO_DEFAULT, AUTHOR_IMAGE_SIZE_DEFAULT } from './constants';
+import {
+	BLOCK_CLASS_NAME,
+	LAYOUT_DEFAULT,
+	Layout,
+	HAS_AUTHOR_INFO_DEFAULT,
+	AUTHOR_IMAGE_SIZE_DEFAULT,
+} from './constants';
 
 export default function save({ attributes }) {
 	const {
