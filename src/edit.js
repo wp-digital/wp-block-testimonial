@@ -12,36 +12,36 @@ import {
 	PanelRow,
 	RadioControl,
 	Button,
-	ResponsiveWrapper,
+	// ResponsiveWrapper,
+	FormToggle,
 } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 
-import { BLOCK_CLASS_NAME, LAYOUT_DEFAULT, Layout } from './constants';
+import { BLOCK_CLASS_NAME, LAYOUT_DEFAULT, Layout, HAS_AUTHOR_INFO_DEFAULT, AUTHOR_IMAGE_SIZE_DEFAULT } from './constants';
 
 import './editor.scss';
 
 export default function Edit(props) {
-	const { attributes, setAttributes, media } = props;
+	const { attributes, setAttributes } = props;
 	const {
 		text,
 		authorName,
 		authorInfo,
-		mediaId,
-		mediaUrl,
+		authorImage,
+		authorImageSize = AUTHOR_IMAGE_SIZE_DEFAULT,
 		layout = LAYOUT_DEFAULT,
+		hasAuthorInfo = HAS_AUTHOR_INFO_DEFAULT,
 	} = attributes;
 
-	const onSelectMedia = (mediaItem) => {
+	const onSelectMedia = (media) => {
 		setAttributes({
-			mediaId: mediaItem.id,
-			mediaUrl: mediaItem.url,
+			authorImage: media,
 		});
 	};
 
 	const removeMedia = () => {
 		setAttributes({
-			mediaId: 0,
-			mediaUrl: '',
+			authorImage: null
 		});
 	};
 
@@ -63,70 +63,12 @@ export default function Edit(props) {
 		<Fragment>
 			<InspectorControls>
 				<PanelBody
-					title={__('Author image', 'innocode-block-testimonial')}
-					initialOpen={true}
-				>
-					<div className="editor-post-featured-image">
-						<MediaUploadCheck>
-							<MediaUpload
-								onSelect={onSelectMedia}
-								value={mediaId}
-								allowedTypes={['image']}
-								render={({ open }) => (
-									<Button
-										className={
-											mediaId === 0
-												? 'editor-post-featured-image__toggle'
-												: 'editor-post-featured-image__preview'
-										}
-										onClick={open}
-									>
-										{mediaId === 0 &&
-											__(
-												'Choose an image',
-												'innocode-block-testimonial'
-											)}
-										{media !== undefined && (
-											<ResponsiveWrapper
-												naturalWidth={
-													media.media_details.width
-												}
-												naturalHeight={
-													media.media_details.height
-												}
-											>
-												<img
-													src={media.source_url}
-													alt=""
-												/>
-											</ResponsiveWrapper>
-										)}
-									</Button>
-								)}
-							/>
-						</MediaUploadCheck>
-						{mediaId !== 0 && (
-							<MediaUploadCheck>
-								<Button
-									onClick={removeMedia}
-									isLink
-									isDestructive
-								>
-									{__(
-										'Remove image',
-										'innocode-block-testimonial'
-									)}
-								</Button>
-							</MediaUploadCheck>
-						)}
-					</div>
-				</PanelBody>
-				<PanelBody
-					title={__('Author layout', 'innocode-block-testimonial')}
+					title={__('Author settings', 'innocode-block-testimonial')}
 					initialOpen={true}
 				>
 					<PanelRow>
 						<RadioControl
+							label={__('Author layout', 'innocode-block-counter')}
 							selected={layout}
 							options={[
 								{
@@ -149,6 +91,19 @@ export default function Edit(props) {
 							}}
 						/>
 					</PanelRow>
+					<PanelRow>
+						<legend className="blocks-base-control__label">
+							{__('Show additional info', 'innocode-block-counter')}
+						</legend>
+						<FormToggle
+							checked={hasAuthorInfo}
+							onChange={(event) => {
+								setAttributes({
+									hasAuthorInfo: event.target.checked,
+								});
+							} }
+						/>
+					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
 			<blockquote
@@ -158,40 +113,91 @@ export default function Edit(props) {
 			>
 				{layout && layout === Layout.AUTHOR_BOTTOM && testimonialText()}
 				<div className={`${BLOCK_CLASS_NAME}__author`}>
-					{mediaUrl && (
-						<img
-							className={`${BLOCK_CLASS_NAME}__author-image`}
-							src={mediaUrl}
-							alt={authorName}
-						/>
-					)}
-					<div className={`${BLOCK_CLASS_NAME}__author-main`}>
-						<PlainText
-							tagName="cite"
-							value={authorName}
-							placeholder={__(
-								'Author name',
-								'innocode-block-testimonial'
-							)}
-							onChange={(value) => {
-								setAttributes({ authorName: value });
-							}}
-							className={`${BLOCK_CLASS_NAME}__author-name`}
-						/>
-						<RichText
-							tagName="div"
-							multiline="p"
-							value={authorInfo}
-							placeholder={__(
-								'Author additional info',
-								'innocode-block-testimonial'
-							)}
-							onChange={(value) => {
-								setAttributes({ authorInfo: value });
-							}}
-							keepPlaceholderOnFocus
-							className={`${BLOCK_CLASS_NAME}__author-info`}
-						/>
+					<div className="editor-post-featured-image">
+						<MediaUploadCheck>
+							<MediaUpload
+								onSelect={onSelectMedia}
+								value={authorImage}
+								allowedTypes={['image']}
+								className="author-image"
+								render={({open}) => (
+									<Button
+										className={
+											authorImage
+												? 'editor-post-featured-image__preview'
+												: 'editor-post-featured-image__toggle'
+										}
+										onClick={open}
+									>
+										{!authorImage &&
+											__(
+												'Choose an image',
+												'innocode-block-testimonial'
+											)}
+										{authorImage && (
+											<img
+												className={`${BLOCK_CLASS_NAME}__author-image`}
+												src={authorImage.sizes[authorImageSize].url}
+												width={authorImage.sizes[authorImageSize].width}
+												height={authorImage.sizes[authorImageSize].height}
+												alt={authorImage.alt}
+											/>
+										)}
+									</Button>
+								)}
+							/>
+						</MediaUploadCheck>
+							{/* {mediaId !== 0 && (
+								<MediaUploadCheck>
+									<Button
+										onClick={removeMedia}
+										isLink
+										isDestructive
+									>
+										{__(
+											'Remove image',
+											'innocode-block-testimonial'
+										)}
+									</Button>
+								</MediaUploadCheck>
+							)} */}
+						</div>
+						{/* {mediaUrl && (
+							<img
+								className={`${BLOCK_CLASS_NAME}__author-image`}
+								src={mediaUrl}
+								alt={authorName}
+							/>
+						)} */}
+						<div className={`${BLOCK_CLASS_NAME}__author-main`}>
+							<PlainText
+								tagName="cite"
+								value={authorName}
+								placeholder={__(
+									'Author name',
+									'innocode-block-testimonial'
+								)}
+								onChange={(value) => {
+									setAttributes({ authorName: value });
+								}}
+								className={`${BLOCK_CLASS_NAME}__author-name`}
+							/>
+						{hasAuthorInfo && (
+							<RichText
+								tagName="div"
+								multiline="p"
+								value={authorInfo}
+								placeholder={__(
+									'Author additional info',
+									'innocode-block-testimonial'
+								)}
+								onChange={(value) => {
+									setAttributes({ authorInfo: value });
+								}}
+								keepPlaceholderOnFocus
+								className={`${BLOCK_CLASS_NAME}__author-info`}
+							/>
+						)}
 					</div>
 				</div>
 				{layout && layout === Layout.AUTHOR_TOP && testimonialText()}

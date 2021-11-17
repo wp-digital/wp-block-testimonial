@@ -10,3 +10,13 @@ export const LAYOUT_DEFAULT = applyFilters(
 	'innocode.block-testimonial.layout.default',
 	Layout.AUTHOR_TOP
 );
+
+export const HAS_AUTHOR_INFO_DEFAULT = applyFilters(
+	'innocode.block-testimonial.has_author_info.default',
+	true
+);
+
+export const AUTHOR_IMAGE_SIZE_DEFAULT = applyFilters(
+	'innocode.block-testimonial.author_image_size.default',
+	'thumbnail'
+);

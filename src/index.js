@@ -5,7 +5,7 @@ import Edit from './edit';
 import save from './save';
 import icon from './icon';
 
-import { LAYOUT_DEFAULT } from './constants';
+import { LAYOUT_DEFAULT, HAS_AUTHOR_INFO_DEFAULT, AUTHOR_IMAGE_SIZE_DEFAULT } from './constants';
 
 import './style.scss';
 
@@ -23,26 +23,24 @@ registerBlockType('innocode/wp-block-testimonial', {
 			type: 'string',
 			default: '',
 		},
-		mediaId: {
-			type: 'number',
-			default: 0,
-		},
-		mediaUrl: {
-			type: 'string',
-			default: '',
-		},
 		layout: {
 			type: 'string',
 			default: LAYOUT_DEFAULT,
 		},
+		hasAuthorInfo: {
+			type: 'boolean',
+			default: HAS_AUTHOR_INFO_DEFAULT,
+		},
+		authorImage: {
+      type: 'object',
+      selector: 'author-image',
+    },
+		authorImageSize: {
+			type: 'string',
+			default: AUTHOR_IMAGE_SIZE_DEFAULT,			
+		}
 	},
-	edit: withSelect((select, props) => {
-		return {
-			media: props.attributes.mediaId
-				? select('core').getMedia(props.attributes.mediaId)
-				: undefined,
-		};
-	})(Edit),
+	edit: Edit,
 	save,
 	icon,
 });
