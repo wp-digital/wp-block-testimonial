@@ -20,13 +20,11 @@
 				color: #fff;
 				transition: opacity 0.3s;
 			}
-
 		}
 
 		.components-button {
 			border-radius: 0;
 		}
-
 	}
 
 	.editor-post-featured-image {
@@ -41,9 +39,7 @@
 				&__author-image-delete {
 					opacity: 1;
 				}
-
 			}
-
 		}
 
 		&__toggle {
@@ -54,9 +50,7 @@
 		&__preview {
 			padding: 0;
 		}
-
 	}
-
 }
 
 .block-editor-block-inspector .components-base-control {

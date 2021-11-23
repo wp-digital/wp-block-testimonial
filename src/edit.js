@@ -12,7 +12,6 @@ import {
 	PanelRow,
 	RadioControl,
 	Button,
-	// ResponsiveWrapper,
 	FormToggle,
 } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
@@ -76,7 +75,7 @@ export default function Edit(props) {
 						<RadioControl
 							label={__(
 								'Author layout',
-								'innocode-block-counter'
+								'innocode-block-testimonial'
 							)}
 							selected={layout}
 							options={[
@@ -104,7 +103,7 @@ export default function Edit(props) {
 						<legend className="blocks-base-control__label">
 							{__(
 								'Show additional info',
-								'innocode-block-counter'
+								'innocode-block-testimonial'
 							)}
 						</legend>
 						<FormToggle
