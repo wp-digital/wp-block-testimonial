@@ -1,5 +1,3 @@
-!!! Coming soon !!!
-
 # Block Testimonial
 
 ### Description
@@ -30,8 +28,5 @@ Activate **Block Testimonial** with [WP-CLI](https://make.wordpress.org/cli/hand
 
 ### Documentation
 
-
-
-### Notes
-
-
+There are some hooks in [constants](./src/constants.js) which give a possibility to
+customize behaviour a bit.

@@ -2,8 +2,9 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 import {
 	BLOCK_CLASS_NAME,
+	LAYOUT_AUTHOR_TOP,
+	LAYOUT_AUTHOR_BOTTOM,
 	LAYOUT_DEFAULT,
-	Layout,
 	HAS_AUTHOR_INFO_DEFAULT,
 	AUTHOR_IMAGE_SIZE_DEFAULT,
 } from './constants';
@@ -34,7 +35,7 @@ export default function save({ attributes }) {
 				className: BLOCK_CLASS_NAME,
 			})}
 		>
-			{layout && layout === Layout.AUTHOR_BOTTOM && testimonialText()}
+			{layout && layout === LAYOUT_AUTHOR_BOTTOM && testimonialText()}
 			<div className={`${BLOCK_CLASS_NAME}__author`}>
 				{authorImage && (
 					<img
@@ -61,7 +62,7 @@ export default function save({ attributes }) {
 					)}
 				</div>
 			</div>
-			{layout && layout === Layout.AUTHOR_TOP && testimonialText()}
+			{layout && layout === LAYOUT_AUTHOR_TOP && testimonialText()}
 		</blockquote>
 	);
 }

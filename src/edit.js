@@ -18,8 +18,9 @@ import { Fragment } from '@wordpress/element';
 
 import {
 	BLOCK_CLASS_NAME,
+	LAYOUT_AUTHOR_TOP,
+	LAYOUT_AUTHOR_BOTTOM,
 	LAYOUT_DEFAULT,
-	Layout,
 	HAS_AUTHOR_INFO_DEFAULT,
 	AUTHOR_IMAGE_SIZE_DEFAULT,
 } from './constants';
@@ -84,14 +85,14 @@ export default function Edit(props) {
 										'Bottom',
 										'innocode-block-testimonial'
 									),
-									value: Layout.AUTHOR_BOTTOM,
+									value: LAYOUT_AUTHOR_BOTTOM,
 								},
 								{
 									label: __(
 										'Top',
 										'innocode-block-testimonial'
 									),
-									value: Layout.AUTHOR_TOP,
+									value: LAYOUT_AUTHOR_TOP,
 								},
 							]}
 							onChange={(value) => {
@@ -122,7 +123,7 @@ export default function Edit(props) {
 					className: BLOCK_CLASS_NAME,
 				})}
 			>
-				{layout && layout === Layout.AUTHOR_BOTTOM && testimonialText()}
+				{layout && layout === LAYOUT_AUTHOR_BOTTOM && testimonialText()}
 				<div className={`${BLOCK_CLASS_NAME}__author`}>
 					<MediaUploadCheck>
 						<MediaUpload
@@ -212,7 +213,7 @@ export default function Edit(props) {
 						)}
 					</div>
 				</div>
-				{layout && layout === Layout.AUTHOR_TOP && testimonialText()}
+				{layout && layout === LAYOUT_AUTHOR_TOP && testimonialText()}
 			</blockquote>
 		</Fragment>
 	);
