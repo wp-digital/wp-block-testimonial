@@ -1,7 +1,7 @@
 {
 	"apiVersion": 2,
 	"name": "innocode/block-testimonial",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "title": "Testimonial",
 	"category": "design",
 	"icon": "smiley",
