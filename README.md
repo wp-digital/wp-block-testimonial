@@ -28,5 +28,21 @@ Activate **Testimonial Block** with [WP-CLI](https://make.wordpress.org/cli/hand
 
 ### Documentation
 
-There are some hooks in [constants](./src/constants.js) which give a possibility to
+Add default image, if needed, with hook `innocode.block-testimonial.author_image.default`.
+**Example**:
+
+````
+wp.hooks.addFilter(
+	'innocode.block-testimonial.author_image.default',
+	'my-theme',
+	() => ( {
+		src: 'https://picsum.photos/150',
+		width: '150',
+		height: '150',
+		alt: 'Random image',
+	} )
+);
+````
+
+There are more hooks in [constants](./src/constants.js) which give a possibility to
 customize behaviour a bit.
