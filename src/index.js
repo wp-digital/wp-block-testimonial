@@ -10,6 +10,7 @@ import './style.scss';
 registerBlockType('innocode/block-testimonial', {
 	apiVersion: 2,
 	supports: {
+		align: ['wide', 'full'],
 		className: false,
 	},
 	attributes,

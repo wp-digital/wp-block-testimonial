@@ -1,4 +1,4 @@
-# Block Testimonial
+# Testimonial Block
 
 ### Description
 
@@ -23,7 +23,7 @@ Shares feedback, review etc. of other people.
     git clone git@github.com:innocode-digital/wp-block-testimonial.git
     ````
 
-Activate **Block Testimonial** with [WP-CLI](https://make.wordpress.org/cli/handbook/)
+Activate **Testimonial Block** with [WP-CLI](https://make.wordpress.org/cli/handbook/)
 `wp plugin activate wp-block-testimonial` or from **Plugins** page.
 
 ### Documentation

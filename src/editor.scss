@@ -1,58 +1,37 @@
 .innocode-block-testimonial {
 
-	& &__author {
+	&-author {
 
-		&-name {
-			background: none;
-			box-shadow: none;
+		&__image {
+			position: relative;
 		}
 
-		&-image {
-			margin: 0;
+		&__remove-image {
+			transition: opacity 0.3s;
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 2;
+			opacity: 0;
+			background: rgba(0, 0, 0, 0.5);
+			color: #fff;
+		}
 
-			&-delete {
-				opacity: 0;
-				position: absolute;
-				top: 0;
-				right: 0;
-				margin: 0 !important;
-				background: rgba(0, 0, 0, 0.5);
-				color: #fff;
-				transition: opacity 0.3s;
-			}
+		&__image:hover &__remove-image {
+			opacity: 1;
 		}
 
 		.components-button {
 			border-radius: 0;
+			padding: 0;
 		}
 	}
 
 	.editor-post-featured-image {
-		flex-shrink: 0;
-		margin-right: 20px;
-		position: relative;
-
-		&:hover {
-
-			.innocode-block-testimonial {
-
-				&__author-image-delete {
-					opacity: 1;
-				}
-			}
-		}
-
-		&__toggle {
-			width: 150px;
-			height: 150px;
-		}
 
 		&__preview {
-			padding: 0;
+			position: relative;
+			z-index: 1;
 		}
 	}
-}
-
-.block-editor-block-inspector .components-base-control {
-	width: 100%;
 }

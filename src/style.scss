@@ -1,47 +1,30 @@
 .innocode-block-testimonial {
 
 	& &__text,
-	& &__author {
+	& &-author {
 
 		p {
 			font-weight: 400;
-			line-height: 1.2;
 		}
 	}
 
-	&::before {
-		display: none;
-	}
-
-	& &__author {
+	& &-author {
 		display: flex;
 		align-items: center;
+		text-align: left;
 
-		&-image {
+		&__image {
 			flex-shrink: 0;
-			margin-right: 20px;
+			margin-right: 1em;
 		}
 
-		&-main {
+		&__main {
 			flex-grow: 1;
 		}
 
-		&-name {
-			display: block;
+		&__name {
 			font-size: 1em;
 			font-weight: 700;
-		}
-
-		&-info {
-
-			p {
-				margin-top: 5px;
-				margin-bottom: 0;
-
-				&:first-child {
-					margin-top: 0;
-				}
-			}
 		}
 	}
 }

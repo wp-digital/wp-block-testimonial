@@ -1,35 +1,67 @@
 import {
-	LAYOUT_DEFAULT,
+	BLOCK_CLASS_NAME,
+	AUTHOR_IMAGE_DEFAULT,
 	HAS_AUTHOR_INFO_DEFAULT,
-	AUTHOR_IMAGE_SIZE_DEFAULT,
+	LAYOUT_AUTHOR_TOP,
+	LAYOUT_AUTHOR_BOTTOM,
+	LAYOUT_DEFAULT,
 } from './constants';
 
 export default {
 	text: {
 		type: 'string',
-		default: '',
+		source: 'html',
+		selector: `.${BLOCK_CLASS_NAME}__text`,
 	},
 	authorName: {
 		type: 'string',
-		default: '',
+		source: 'html',
+		selector: `.${BLOCK_CLASS_NAME}-author__name`,
 	},
-	authorInfo: {
-		type: 'string',
-		default: '',
+	attachmentId: {
+		type: 'integer',
+		default: 0,
 	},
-	layout: {
+	authorImageSrc: {
 		type: 'string',
-		default: LAYOUT_DEFAULT,
+		default: AUTHOR_IMAGE_DEFAULT.src,
+		source: 'attribute',
+		selector: `.${BLOCK_CLASS_NAME}-author__image img`,
+		attribute: 'src',
+	},
+	authorImageWidth: {
+		type: 'string',
+		default: AUTHOR_IMAGE_DEFAULT.width,
+		source: 'attribute',
+		selector: `.${BLOCK_CLASS_NAME}-author__image img`,
+		attribute: 'width',
+	},
+	authorImageHeight: {
+		type: 'string',
+		default: AUTHOR_IMAGE_DEFAULT.height,
+		source: 'attribute',
+		selector: `.${BLOCK_CLASS_NAME}-author__image img`,
+		attribute: 'height',
+	},
+	authorImageAlt: {
+		type: 'string',
+		default: AUTHOR_IMAGE_DEFAULT.alt,
+		source: 'attribute',
+		selector: `.${BLOCK_CLASS_NAME}-author__image img`,
+		attribute: 'alt',
 	},
 	hasAuthorInfo: {
 		type: 'boolean',
 		default: HAS_AUTHOR_INFO_DEFAULT,
 	},
-	authorImage: {
-		type: 'object',
-	},
-	authorImageSize: {
+	authorInfo: {
 		type: 'string',
-		default: AUTHOR_IMAGE_SIZE_DEFAULT,
+		source: 'html',
+		selector: `.${BLOCK_CLASS_NAME}-author__info`,
+	},
+	layout: {
+		type: 'string',
+		default: LAYOUT_DEFAULT,
+		enum: [LAYOUT_AUTHOR_TOP, LAYOUT_AUTHOR_BOTTOM],
 	},
 };
