@@ -24,8 +24,9 @@ import {
 	AUTHOR_IMAGE_DEFAULT,
 	AUTHOR_IMAGE_SIZE,
 	HAS_AUTHOR_INFO_DEFAULT,
-	LAYOUT_AUTHOR_TOP,
-	LAYOUT_AUTHOR_BOTTOM,
+	LAYOUT_TEXT_TOP,
+	LAYOUT_TEXT_BOTTOM,
+	LAYOUT_TEXT_RIGHT,
 	LAYOUT_DEFAULT,
 } from './constants';
 
@@ -194,7 +195,7 @@ export default function Edit(props) {
 					</div>
 				</PanelBody>
 				<PanelBody
-					title={__('Author settings', 'innocode-block-testimonial')}
+					title={__('Block settings', 'innocode-block-testimonial')}
 					initialOpen={false}
 				>
 					<PanelRow>
@@ -209,22 +210,32 @@ export default function Edit(props) {
 					</PanelRow>
 					<PanelRow>
 						<RadioControl
-							label={__('Layout', 'innocode-block-testimonial')}
+							label={__(
+								'Text layout',
+								'innocode-block-testimonial'
+							)}
 							selected={layout}
 							options={[
 								{
 									label: __(
-										'Before text',
+										'Top',
 										'innocode-block-testimonial'
 									),
-									value: LAYOUT_AUTHOR_TOP,
+									value: LAYOUT_TEXT_TOP,
 								},
 								{
 									label: __(
-										'After text',
+										'Bottom',
 										'innocode-block-testimonial'
 									),
-									value: LAYOUT_AUTHOR_BOTTOM,
+									value: LAYOUT_TEXT_BOTTOM,
+								},
+								{
+									label: __(
+										'Right',
+										'innocode-block-testimonial'
+									),
+									value: LAYOUT_TEXT_RIGHT,
 								},
 							]}
 							onChange={onLayoutChange}
@@ -232,7 +243,7 @@ export default function Edit(props) {
 					</PanelRow>
 				</PanelBody>
 			</InspectorControls>
-			{layout === LAYOUT_AUTHOR_BOTTOM && (
+			{layout === LAYOUT_TEXT_TOP && (
 				<TestimonialText value={text} onChange={onTextChange} />
 			)}
 			<figcaption className={`${BLOCK_CLASS_NAME}-author`}>
@@ -289,6 +300,9 @@ export default function Edit(props) {
 					</div>
 				)}
 				<div className={`${BLOCK_CLASS_NAME}-author__main`}>
+					{layout === LAYOUT_TEXT_RIGHT && (
+						<TestimonialText value={text} onChange={onTextChange} />
+					)}
 					<RichText
 						tagName="span"
 						allowedFormats={['core/link']}
@@ -316,7 +330,7 @@ export default function Edit(props) {
 					)}
 				</div>
 			</figcaption>
-			{layout === LAYOUT_AUTHOR_TOP && (
+			{layout === LAYOUT_TEXT_BOTTOM && (
 				<TestimonialText value={text} onChange={onTextChange} />
 			)}
 		</figure>

@@ -4,8 +4,9 @@ import {
 	BLOCK_CLASS_NAME,
 	AUTHOR_IMAGE_DEFAULT,
 	HAS_AUTHOR_INFO_DEFAULT,
-	LAYOUT_AUTHOR_TOP,
-	LAYOUT_AUTHOR_BOTTOM,
+	LAYOUT_TEXT_TOP,
+	LAYOUT_TEXT_BOTTOM,
+	LAYOUT_TEXT_RIGHT,
 	LAYOUT_DEFAULT,
 } from './constants';
 
@@ -37,9 +38,7 @@ export default function save({ attributes }) {
 				className: BLOCK_CLASS_NAME,
 			})}
 		>
-			{layout === LAYOUT_AUTHOR_BOTTOM && (
-				<TestimonialText value={text} />
-			)}
+			{layout === LAYOUT_TEXT_TOP && <TestimonialText value={text} />}
 			<figcaption className={`${BLOCK_CLASS_NAME}-author`}>
 				{!!authorImageSrc && (
 					<div className={`${BLOCK_CLASS_NAME}-author__image`}>
@@ -52,6 +51,9 @@ export default function save({ attributes }) {
 					</div>
 				)}
 				<div className={`${BLOCK_CLASS_NAME}-author__main`}>
+					{layout === LAYOUT_TEXT_RIGHT && (
+						<TestimonialText value={text} />
+					)}
 					<RichText.Content
 						tagName="span"
 						value={authorName}
@@ -67,7 +69,7 @@ export default function save({ attributes }) {
 					)}
 				</div>
 			</figcaption>
-			{layout === LAYOUT_AUTHOR_TOP && <TestimonialText value={text} />}
+			{layout === LAYOUT_TEXT_BOTTOM && <TestimonialText value={text} />}
 		</figure>
 	);
 }

@@ -25,9 +25,10 @@ export const HAS_AUTHOR_INFO_DEFAULT = applyFilters(
 	true
 );
 
-export const LAYOUT_AUTHOR_TOP = 'author_top';
-export const LAYOUT_AUTHOR_BOTTOM = 'author_bottom';
+export const LAYOUT_TEXT_TOP = 'text_top';
+export const LAYOUT_TEXT_BOTTOM = 'text_bottom';
+export const LAYOUT_TEXT_RIGHT = 'text_right';
 export const LAYOUT_DEFAULT = applyFilters(
 	'innocode.block-testimonial.layout.default',
-	LAYOUT_AUTHOR_TOP
+	LAYOUT_TEXT_TOP
 );
