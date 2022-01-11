@@ -101,7 +101,7 @@ export default function Edit(props) {
 	return (
 		<figure
 			{...useBlockProps({
-				className: BLOCK_CLASS_NAME,
+				className: `${BLOCK_CLASS_NAME} ${layout}`,
 			})}
 		>
 			<InspectorControls>
