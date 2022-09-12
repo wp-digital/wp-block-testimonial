@@ -35,7 +35,7 @@ export default function save({ attributes }) {
 	return (
 		<figure
 			{...useBlockProps.save({
-				className: BLOCK_CLASS_NAME,
+				className: `${BLOCK_CLASS_NAME} ${layout}`,
 			})}
 		>
 			{layout === LAYOUT_TEXT_TOP && <TestimonialText value={text} />}
