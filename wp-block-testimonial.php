@@ -4,11 +4,11 @@
  * Description:       Shares feedback, review etc. of other people.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           2.1.0
+ * Version:           2.2.0
  * Author:            Innocode
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       innocode-block-testimonial
+ * Text Domain:       innocode-blocks
  *
  * @package           innocode
  */

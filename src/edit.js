@@ -37,7 +37,7 @@ const TestimonialText = ({ value, onChange }) => (
 		tagName="blockquote"
 		multiline="p"
 		value={value}
-		placeholder={__('Text', 'innocode-block-testimonial')}
+		placeholder={__('Text', 'innocode-blocks')}
 		onChange={onChange}
 		className={`${BLOCK_CLASS_NAME}__text`}
 	/>
@@ -106,7 +106,7 @@ export default function Edit(props) {
 		>
 			<InspectorControls>
 				<PanelBody
-					title={__('Author Image', 'innocode-block-testimonial')}
+					title={__('Author Image', 'innocode-blocks')}
 					initialOpen
 				>
 					<div className="editor-post-featured-image">
@@ -154,7 +154,7 @@ export default function Edit(props) {
 											{!attachmentId &&
 												__(
 													'Choose an image',
-													'innocode-block-testimonial'
+													'innocode-blocks'
 												)}
 										</Button>
 									</div>
@@ -171,7 +171,7 @@ export default function Edit(props) {
 										<Button onClick={open} isSecondary>
 											{__(
 												'Replace Author Image',
-												'innocode-block-testimonial'
+												'innocode-blocks'
 											)}
 										</Button>
 									)}
@@ -187,7 +187,7 @@ export default function Edit(props) {
 								>
 									{__(
 										'Remove Author Image',
-										'innocode-block-testimonial'
+										'innocode-blocks'
 									)}
 								</Button>
 							</MediaUploadCheck>
@@ -195,14 +195,14 @@ export default function Edit(props) {
 					</div>
 				</PanelBody>
 				<PanelBody
-					title={__('Block settings', 'innocode-block-testimonial')}
+					title={__('Block settings', 'innocode-blocks')}
 					initialOpen={false}
 				>
 					<PanelRow>
 						<ToggleControl
 							label={__(
 								'Show additional info',
-								'innocode-block-testimonial'
+								'innocode-blocks'
 							)}
 							checked={hasAuthorInfo}
 							onChange={onHasAuthorInfoChange}
@@ -210,31 +210,19 @@ export default function Edit(props) {
 					</PanelRow>
 					<PanelRow>
 						<RadioControl
-							label={__(
-								'Text layout',
-								'innocode-block-testimonial'
-							)}
+							label={__('Text layout', 'innocode-blocks')}
 							selected={layout}
 							options={[
 								{
-									label: __(
-										'Top',
-										'innocode-block-testimonial'
-									),
+									label: __('Top', 'innocode-blocks'),
 									value: LAYOUT_TEXT_TOP,
 								},
 								{
-									label: __(
-										'Bottom',
-										'innocode-block-testimonial'
-									),
+									label: __('Bottom', 'innocode-blocks'),
 									value: LAYOUT_TEXT_BOTTOM,
 								},
 								{
-									label: __(
-										'Right',
-										'innocode-block-testimonial'
-									),
+									label: __('Right', 'innocode-blocks'),
 									value: LAYOUT_TEXT_RIGHT,
 								},
 							]}
@@ -278,11 +266,11 @@ export default function Edit(props) {
 								icon="dismiss"
 								title={__(
 									'Remove Author Image',
-									'innocode-block-testimonial'
+									'innocode-blocks'
 								)}
 								aria-label={__(
 									'Remove Author Image',
-									'innocode-block-testimonial'
+									'innocode-blocks'
 								)}
 								className={`${BLOCK_CLASS_NAME}-author__remove-image`}
 							/>
@@ -307,10 +295,7 @@ export default function Edit(props) {
 						tagName="span"
 						allowedFormats={['core/link']}
 						value={authorName}
-						placeholder={__(
-							'Author name',
-							'innocode-block-testimonial'
-						)}
+						placeholder={__('Author name', 'innocode-blocks')}
 						onChange={onAuthorNameChange}
 						className={`${BLOCK_CLASS_NAME}-author__name`}
 					/>
@@ -322,7 +307,7 @@ export default function Edit(props) {
 							value={authorInfo}
 							placeholder={__(
 								'Author additional info',
-								'innocode-block-testimonial'
+								'innocode-blocks'
 							)}
 							onChange={onAuthorInfoChange}
 							className={`${BLOCK_CLASS_NAME}-author__info`}
