@@ -1,14 +1,14 @@
 {
 	"apiVersion": 2,
-	"name": "innocode/block-testimonial",
-    "version": "2.2.0",
-    "title": "Testimonial",
+	"name": "wpd/block-testimonial",
+	"version": "2.3.0",
+	"title": "Testimonial",
 	"category": "design",
 	"description": "Shares feedback, review etc. of other people.",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "innocode-blocks",
+	"textdomain": "wpd-blocks",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css"

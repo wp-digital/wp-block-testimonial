@@ -7,7 +7,7 @@ import icon from './icon';
 
 import './style.scss';
 
-registerBlockType('innocode/block-testimonial', {
+registerBlockType('wpd/block-testimonial', {
 	apiVersion: 2,
 	supports: {
 		align: ['wide', 'full'],

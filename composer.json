@@ -1,11 +1,16 @@
 {
-  "name": "innocode-digital/wp-block-testimonial",
-  "version": "2.2.0",
-  "type": "wordpress-plugin",
-  "license": "GPL-2.0+",
-  "require": {
-	"php": ">=7.1",
-	"composer/installers": "^1.9"
-  },
-  "description": "Shares feedback, review etc. of other people."
+	"name": "wpd-digital/wp-block-testimonial",
+	"version": "2.3.0",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0+",
+	"require": {
+		"php": ">=7.1",
+		"composer/installers": "^1.9"
+	},
+	"description": "Shares feedback, review etc. of other people.",
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	}
 }
